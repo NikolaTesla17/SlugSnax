@@ -88,7 +88,7 @@ fetch('https://ucsc.cc/api', {method: 'GET'}).then(function(response) { return r
                     document.getElementById("timeTillMealChange").innerHTML = "Breakfast - In " + (60-minutes) + " minutes";
                     if (minutes == 0){
                         document.getElementById("timeTillMealChange").innerHTML = "Breakfast - In 1 hour";
-                    } else if (minutes=60){
+                    } else if (minutes==60){
                         document.getElementById("timeTillMealChange").innerHTML = "Breakfast - Imminent";
                     }
                 }
@@ -153,7 +153,7 @@ fetch('https://ucsc.cc/api', {method: 'GET'}).then(function(response) { return r
     setBgColor(diningHalls[Object.keys(diningHalls).reduce(function(a, b){ return diningHalls[a] > diningHalls[b] ? a : b })], "topPodiumBg");
     delete diningHalls[Object.keys(diningHalls).reduce(function(a, b){ return diningHalls[a] > diningHalls[b] ? a : b })];
     mid = Object.keys(diningHalls).reduce(function(a, b){ return diningHalls[a] > diningHalls[b] ? a : b }).split("/")[0];
-    if (mid == "College Nine"){mid = "College 9"}
+    if (mid == "College Nine"){mid = "9/10"}
     document.getElementById("podiumMid").innerHTML = mid;
     document.getElementById("midPoints").innerHTML = diningHalls[Object.keys(diningHalls).reduce(function(a, b){ return diningHalls[a] > diningHalls[b] ? a : b })];
     setBgColor(diningHalls[Object.keys(diningHalls).reduce(function(a, b){ return diningHalls[a] > diningHalls[b] ? a : b })], "midBg");
