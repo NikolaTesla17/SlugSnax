@@ -1,0 +1,29 @@
+body {
+    background-color: black;
+    font-family: 'Montserrat';
+}
+h1 {
+    margin: 3vw auto;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    text-align: center;
+    color: white;
+    font-size: 7vh;
+    font-weight: bold;
+    border-radius: 2vw;
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+    width: 94%;
+}
+.hall {
+    border-radius: 2vw;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    font-size: 4vh;
+    /* text-align: Center; */
+    margin: 3vw auto;
+    margin-bottom: 0;
+    color: white;
+    width: 94%;
+}
