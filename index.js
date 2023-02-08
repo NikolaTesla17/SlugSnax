@@ -44,7 +44,6 @@ fetch('https://ucsc.cc/api', {method: 'GET'}).then(function(response) { return r
         }
         diningHalls[json[0].halls[i].name] = 0;
             if(7>hours){//pre breakfast'
-                console.log("pre breakfast")
                 j = 0;
                 if(7-hours==0){
                     if (minutes == 0){

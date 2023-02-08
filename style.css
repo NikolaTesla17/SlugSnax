@@ -4,6 +4,8 @@ body {
 }
 h1 {
     margin: 3vw auto;
+    margin-bottom: 1vw;
+    margin-top: 1vw;
     padding-top: 1vw;
     padding-bottom: 1vw;
     text-align: center;
