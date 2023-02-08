@@ -14,7 +14,7 @@ function setHoursRemaining(hoursOfSwap, minutesOfSwap, meal){
     if(hoursOfSwap-1-hours==0){
         document.getElementById("timeTillMealChange").innerHTML = meal + " - " + (minutesOfSwap-minutes) + " minutes left";
     }else{
-        document.getElementById("timeTillMealChange").innerHTML = meal + " - " (hoursOfSwap-1-hours) + " hours and "+ (minutesOfSwap+60-minutes) + " minutes left";
+        document.getElementById("timeTillMealChange").innerHTML = meal + " - " + (hoursOfSwap-1-hours) + " hours and "+ (minutesOfSwap+60-minutes) + " minutes left";
     }
 }
 
