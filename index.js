@@ -83,14 +83,14 @@ fetch('https://ucsc.cc/api', {method: 'GET'}).then(function(response) { return r
             if(7>hours){//pre breakfast'
             backgroundColorScale = "Breakfast";
                 j = 0;
+                document.getElementById("timeTillMealChange").innerHTML = "Breakfast - In " + (7-hours) + " hours and " + (60-minutes) + " minutes";
                 if(7-1-hours==0){
-                    document.getElementById("timeTillMealChange").innerHTML = "Breakfast - In " + (7-hours) + " hours and " + (60-minutes) + " minutes";
+                    document.getElementById("timeTillMealChange").innerHTML = "Breakfast - In " + (60-minutes) + " minutes";
                     if (minutes == 0){
                         document.getElementById("timeTillMealChange").innerHTML = "Breakfast - In 1 hour";
                     } else if (minutes=60){
                         document.getElementById("timeTillMealChange").innerHTML = "Breakfast - Imminent";
                     }
-                    document.getElementById("timeTillMealChange").innerHTML = "Breakfast - In " + (60-minutes) + " minutes";
                 }
             }
             else if(hours>=7&&11>hours){//breakfast
