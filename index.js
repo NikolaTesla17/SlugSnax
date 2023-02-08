@@ -159,11 +159,10 @@ fetch('https://ucsc.cc/api', {method: 'GET'}).then(function(response) { return r
     setBgColor(diningHalls[Object.keys(diningHalls).reduce(function(a, b){ return diningHalls[a] > diningHalls[b] ? a : b })], "midBg");
     delete diningHalls[Object.keys(diningHalls).reduce(function(a, b){ return diningHalls[a] > diningHalls[b] ? a : b })];
     participant = Object.keys(diningHalls).reduce(function(a, b){ return diningHalls[a] > diningHalls[b] ? a : b }).split("/")[0];
-    if (participant == "College Nine"){participant = "College 9"}
+    if (participant == "College Nine"){participant = "9/10"}
     document.getElementById("participant").innerHTML = participant;
     document.getElementById("lowPoints").innerHTML = diningHalls[Object.keys(diningHalls).reduce(function(a, b){ return diningHalls[a] > diningHalls[b] ? a : b })];
     setBgColor(diningHalls[Object.keys(diningHalls).reduce(function(a, b){ return diningHalls[a] > diningHalls[b] ? a : b })], "lowBg");
-
 
     for (var i = 0; i < json[0].halls.length; i++) {//check if besst dining hall
         if (json[0].halls[i].name == "Porter/Kresge") {
