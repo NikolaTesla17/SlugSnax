@@ -18,6 +18,10 @@ h1 {
     overflow: hidden;
     width: 94%;
 }
+p {
+    font-weight:650;
+    font-size: 4vh;
+}
 .hall {
     border-radius: 2vw;
     padding-top: 1vw;
