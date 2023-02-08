@@ -83,7 +83,7 @@ fetch('https://ucsc.cc/api', {method: 'GET'}).then(function(response) { return r
             if(7>hours){//pre breakfast'
             backgroundColorScale = "Breakfast";
                 j = 0;
-                if(7-hours==0){
+                if(7-1-hours==0){
                     if (minutes == 0){
                         document.getElementById("timeTillMealChange").innerHTML = "Breakfast - In 1 hour";
                     } else if (minutes=60){
