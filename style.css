@@ -32,3 +32,20 @@ p {
     color: white;
     width: 94%;
 }
+button {
+    border-width:0px;
+}
+.foodList {
+    margin-top:-10vh;
+    position:absolute;
+    text-align: left;
+}
+.foodListEntry {
+    font-size: 3vh;
+    margin: 1vw;
+    font-weight: 500;
+    font-size: 4vh;
+    margin-left: 3vw;
+    margin-right: 3vw;
+    color: white;
+}

@@ -1,4 +1,5 @@
 diningHalls = {};
+diningHallFoods = {};
 maxFoodScore = 0;
 bestFood = "Error Finding Food";
 var time = new Date();
@@ -9,13 +10,45 @@ hoursTillMealChange = 0;
 minutesTillMealChange = 0;
 maxDiningHallScore = 0;
 backgroundColorScale = "Breakfast";
+orderedHalls = [];
 
 function setHoursRemaining(hoursOfSwap, minutesOfSwap, meal){
     if(hoursOfSwap-1-hours==0){
-        document.getElementById("timeTillMealChange").innerHTML = meal + " - " + (minutesOfSwap-minutes) + " minutes left";
+        document.getElementById("timeTillMealChange").innerHTML = meal + " - " + (minutesOfSwap+60-minutes) + " minutes left";
     }else{
         document.getElementById("timeTillMealChange").innerHTML = meal + " - " + (hoursOfSwap-1-hours) + " hours and "+ (minutesOfSwap+60-minutes) + " minutes left";
     }
+}
+
+function getDetail(position){
+    document.getElementById("topPodiumBg").style.position = "absolute"
+    document.getElementById("lowBg").style.position = "absolute"
+    document.getElementById("midBg").style.position = "absolute"
+    if (position == 0){
+        document.getElementById("midBg").style.visibility = "hidden";
+        document.getElementById("lowBg").style.visibility = "hidden";
+        document.getElementById("topPodiumBg").style.height = "75vh"
+        document.getElementById("podiumTop").style.marginTop = "-33.5vh";
+        document.getElementById("bestFood").style.visibility = "hidden";
+        document.getElementById("topPoints").style.visibility = "hidden";
+        document.getElementById("topPodiumBg").innerHTML += "<div id=\"foodList\" class=\"foodList\"></div>";
+        for (var i = 0; i < diningHallFoods[orderedHalls[position]].length; i++){
+            console.log(diningHallFoods[orderedHalls[position]][i])
+            document.getElementById("foodList").innerHTML += "<div class=\"foodListEntry\">" + diningHallFoods[orderedHalls[position]][i] + "</div>";
+        }
+    }
+    if (position == 1){
+        document.getElementById("topPodiumBg").style.visibility = "hidden";
+        document.getElementById("lowBg").style.visibility = "hidden";
+        document.getElementById("midBg").style.height = "75vh"
+    }
+    if (position == 2){
+        document.getElementById("topPodiumBg").style.visibility = "hidden";
+        document.getElementById("midBg").style.visibility = "hidden";
+        document.getElementById("lowBg").style.height = "75vh"
+    }
+    document.getElementById("timeTillMealChange").style.position = "absolute";
+    document.getElementById("timeTillMealChange").style.marginTop = "80vh";
 }
 
 function setBgColor(points, id){
@@ -80,6 +113,8 @@ fetch('https://ucsc.cc/api', {method: 'GET'}).then(function(response) { return r
             break;
         }
         diningHalls[json[0].halls[i].name] = 0;
+        toRefrence = json[0].halls[i].name;
+        diningHallFoods[toRefrence] = [];
             if(7>hours){//pre breakfast'
             backgroundColorScale = "Breakfast";
                 j = 0;
@@ -142,6 +177,7 @@ fetch('https://ucsc.cc/api', {method: 'GET'}).then(function(response) { return r
                                 bestFood = foodScores[y].name;
                             }
                             diningHalls[json[0].halls[i].name] += foodScores[y].points;
+                            diningHallFoods[json[0].halls[i].name].push(foodScores[y].name)
                         }
                     }
                 }
@@ -151,19 +187,21 @@ fetch('https://ucsc.cc/api', {method: 'GET'}).then(function(response) { return r
     document.getElementById("topPoints").innerHTML = diningHalls[Object.keys(diningHalls).reduce(function(a, b){ return diningHalls[a] > diningHalls[b] ? a : b })] + document.getElementById("topPoints").innerHTML;
     document.getElementById("bestFood").innerHTML = bestFood;
     setBgColor(diningHalls[Object.keys(diningHalls).reduce(function(a, b){ return diningHalls[a] > diningHalls[b] ? a : b })], "topPodiumBg");
+    orderedHalls.push(Object.keys(diningHalls).reduce(function(a, b){ return diningHalls[a] > diningHalls[b] ? a : b }));
     delete diningHalls[Object.keys(diningHalls).reduce(function(a, b){ return diningHalls[a] > diningHalls[b] ? a : b })];
+    orderedHalls.push(Object.keys(diningHalls).reduce(function(a, b){ return diningHalls[a] > diningHalls[b] ? a : b }));
     mid = Object.keys(diningHalls).reduce(function(a, b){ return diningHalls[a] > diningHalls[b] ? a : b }).split("/")[0];
     if (mid == "College Nine"){mid = "9/10"}
     document.getElementById("podiumMid").innerHTML = mid;
     document.getElementById("midPoints").innerHTML = diningHalls[Object.keys(diningHalls).reduce(function(a, b){ return diningHalls[a] > diningHalls[b] ? a : b })];
     setBgColor(diningHalls[Object.keys(diningHalls).reduce(function(a, b){ return diningHalls[a] > diningHalls[b] ? a : b })], "midBg");
     delete diningHalls[Object.keys(diningHalls).reduce(function(a, b){ return diningHalls[a] > diningHalls[b] ? a : b })];
+    orderedHalls.push(Object.keys(diningHalls).reduce(function(a, b){ return diningHalls[a] > diningHalls[b] ? a : b }));
     participant = Object.keys(diningHalls).reduce(function(a, b){ return diningHalls[a] > diningHalls[b] ? a : b }).split("/")[0];
     if (participant == "College Nine"){participant = "9/10"}
     document.getElementById("participant").innerHTML = participant;
     document.getElementById("lowPoints").innerHTML = diningHalls[Object.keys(diningHalls).reduce(function(a, b){ return diningHalls[a] > diningHalls[b] ? a : b })];
     setBgColor(diningHalls[Object.keys(diningHalls).reduce(function(a, b){ return diningHalls[a] > diningHalls[b] ? a : b })], "lowBg");
-
     for (var i = 0; i < json[0].halls.length; i++) {//check if besst dining hall
         if (json[0].halls[i].name == "Porter/Kresge") {
             i++;
@@ -185,6 +223,7 @@ fetch('https://ucsc.cc/api', {method: 'GET'}).then(function(response) { return r
             }
         }
     }
+    console.log(diningHalls)
 
     if (diningHalls[Object.keys(diningHalls).reduce(function(a, b){ return diningHalls[a] > diningHalls[b] ? a : b })] == maxDiningHallScore){{
         document.getElementById("topPodiumBg").cssText = "border-top: 80px solid white;border-left: 80px solid red;"

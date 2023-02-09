@@ -10,20 +10,20 @@
   <body>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 	<script src="index.js"></script>
-    <div id="topPodiumBg" class="hall" style="background-color: #004800;overflow-wrap: break-word;">
+    <button id="topPodiumBg" class="hall" onclick="getDetail(0)" style="background-color: #004800;overflow-wrap: break-word;margin-left: 3%;">
       <h1 id="podiumTop" style = "margin-top: 3vh;margin-bottom: 3vh;"> Dining Hall</h1>
       <p id="topPoints" style="float:left;padding-left:4vw;padding-top:1vw;margin-top: 0;"> pts</p>
       <p id="bestFood" style="padding-top:1vw;text-align:right;padding-right:4vw;margin-top:0;margin-bottom:1vh;">Peruvian Beef Saltado</p>
-    </div>
-    <div id="midBg" class="hall" style="background-color: #624F1C;">
+    </button>
+    <button id="midBg" class="hall" onclick="getDetail(1)" style="background-color: #624F1C;margin-left: 3%;">
       <h1 id="podiumMid" style="float:left;padding-left:4vw;width:auto;">Crown</h1>
       <h1 id="midPoints" style="padding-right:4vw;width:auto;text-align:right;">79</h1>
-    </div>
-    <div id="lowBg" class="hall" style="background-color: #134344;">
+    </button>
+    <button id="lowBg" class="hall" onclick="getDetail(2)" style="background-color: #134344;margin-left: 3%;">
       <h1 id="participant" style="float:left;padding-left:4vw;width:auto;">Cowell</h1>
       <h1 id="lowPoints" style="padding-right:4vw;width:auto;text-align:right;">26</h1>
-    </div>
-      <p id="timeTillMealChange" style="color:white;text-align: center;font-size: 3vh;font-weight: bold;margin-top:3vh">There is Probably Food, IDK</p>
+    </button>
+      <p id="timeTillMealChange" style="color:white;text-align: center;font-size: 3vh;font-weight: bold;margin-top:3vh;width:100vw;text-align:center;">There is Probably Food, IDK</p>
     </body>
   </body>
 </html>
